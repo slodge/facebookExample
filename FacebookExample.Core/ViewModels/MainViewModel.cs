@@ -13,6 +13,7 @@ namespace FacebookExample.Core.ViewModels
         public MainViewModel()
         {
             this.Facebook.ConnectionChanged += FacebookOnConnectionChanged;
+            UpdateConnection(this.Facebook);
         }
 
         private void FacebookOnConnectionChanged(object sender, EventArgs eventArgs)
@@ -23,6 +24,11 @@ namespace FacebookExample.Core.ViewModels
                 throw new ArgumentException("sender");
             }
 
+            UpdateConnection(facebook);
+        }
+
+        private void UpdateConnection(ISimpleFacebookService facebook)
+        {
             this.ConnectionAvailable = facebook.IsConnected;
             if (facebook.IsConnected)
             {
@@ -68,6 +74,11 @@ namespace FacebookExample.Core.ViewModels
         public IMvxCommand ConnectCommand
         {
             get { return new MvxRelayCommand(() => this.RequestNavigate<LoginViewModel>()); }
+        }
+
+        public IMvxCommand ForgetCommand
+        {
+            get { return new MvxRelayCommand(() => this.Facebook.ForgetConnection());}
         }
     }
 }

@@ -19,7 +19,7 @@
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-
+    
         <!--TitlePanel contains the name of the application and page title-->
         <StackPanel x:Name="TitlePanel" Grid.Row="0" Margin="12,17,0,28">
             <TextBlock x:Name="ApplicationTitle" Text="MY APPLICATION" Style="{StaticResource PhoneTextNormalStyle}"/>
@@ -31,7 +31,8 @@
             <StackPanel>
                 <TextBlock Text="I wantz ur brainz" />
                 <TextBlock Text="{Binding Message}" TextWrapping="Wrap"  />
-                <Image Source="{Binding ImageUrl}" />
+                <Image Source="{Binding ImageUrl}"  />
+                <Button Height="120" Command="{Binding ForgetCommand}" Content="Forgetz"></Button>
             </StackPanel>
             <Grid Background="Gray" Visibility="{Binding ConnectionAvailable, Converter={StaticResource InvertedVisibilityConverter}}" >
                 <Button Height="120" Command="{Binding ConnectCommand}" Content="Login"></Button>

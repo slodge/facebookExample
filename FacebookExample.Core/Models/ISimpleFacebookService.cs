@@ -9,6 +9,7 @@ namespace FacebookExample.Core.Models
         bool TryParseOAuthCallbackUrl(Uri uri, out FacebookOAuthResult oAuthResult);
         event EventHandler ConnectionChanged;
         bool IsConnected { get;  }
+        void ForgetConnection();
         void GetNameAsync(Action<string, string, string> success, Action<Exception> error);
     }
 }

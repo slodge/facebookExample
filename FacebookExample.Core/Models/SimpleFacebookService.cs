@@ -1,21 +1,37 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Net;
+using Cirrious.MvvmCross.ExtensionMethods;
+using Cirrious.MvvmCross.Interfaces.Platform;
+using Cirrious.MvvmCross.Interfaces.ServiceProvider;
 using Facebook;
 
 namespace FacebookExample.Core.Models
 {
-    public class SimpleFacebookService : ISimpleFacebookService
+    public class SimpleFacebookService 
+        : ISimpleFacebookService
+        , IMvxServiceConsumer<IMvxSimpleFileStoreService>
     {
         public const string FacebookAppId = "6543862477";
         public const string FacebookAppSecret = "6d61dbddd5d913c00ffa89667f316263";
         public const string FacebookAppRedirectUrl = "http://ignored.com/";
         public const string ExtendedPermissions = "user_photos,user_about_me";
+        public const string PersistFileName = "access.txt";
 
         private string _accessToken;
 
+        private IMvxSimpleFileStoreService FileStore
+        {
+            get { return this.GetService<IMvxSimpleFileStoreService>(); }
+        }
+
         public SimpleFacebookService()
         {
+            var fileStore = FileStore;
+            if (fileStore.Exists(PersistFileName))
+            {
+                fileStore.TryReadTextFile(PersistFileName, out _accessToken);
+            }
         }
 
         private FacebookClient CreateFacebookClient()
@@ -55,6 +71,8 @@ namespace FacebookExample.Core.Models
             }
 
             _accessToken = oAuthResult.AccessToken;
+            var fileStore = FileStore;
+            fileStore.WriteFile(PersistFileName, _accessToken);
             FireConnectionChanged();
             return true;
         }
@@ -95,6 +113,17 @@ namespace FacebookExample.Core.Models
                                    };
 
             fb.GetAsync("me");
+        }
+
+        public void ForgetConnection()
+        {
+            var fileStore = FileStore;
+            if (fileStore.Exists(PersistFileName))
+            {
+                fileStore.DeleteFile(PersistFileName);
+            }
+            this._accessToken = null;
+            FireConnectionChanged();
         }
     }
 }
