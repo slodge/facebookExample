@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacebookExample.Core", "FacebookExample.Core\FacebookExample.Core.csproj", "{F47EB338-0A89-436A-86AE-E94DE569DC4F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FacebookExample.UI", "FacebookExample.UI\FacebookExample.UI.csproj", "{ACDEB68D-C2DE-4EB8-A3E8-4D9FDEEF7B23}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F47EB338-0A89-436A-86AE-E94DE569DC4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F47EB338-0A89-436A-86AE-E94DE569DC4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F47EB338-0A89-436A-86AE-E94DE569DC4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F47EB338-0A89-436A-86AE-E94DE569DC4F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACDEB68D-C2DE-4EB8-A3E8-4D9FDEEF7B23}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ACDEB68D-C2DE-4EB8-A3E8-4D9FDEEF7B23}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ACDEB68D-C2DE-4EB8-A3E8-4D9FDEEF7B23}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{ACDEB68D-C2DE-4EB8-A3E8-4D9FDEEF7B23}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ACDEB68D-C2DE-4EB8-A3E8-4D9FDEEF7B23}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ACDEB68D-C2DE-4EB8-A3E8-4D9FDEEF7B23}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
